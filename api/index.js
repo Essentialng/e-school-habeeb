@@ -22,6 +22,7 @@ import Visitor from "./models/visitors.js";
 import authJobrouter from "./routes/job/authejobsRoute.js";
 import postjobroute from "./routes/job/employerRoute.js";
 import applyjobroute from "./routes/job/JobseekerRoute.js";
+import adminrouter from "./routes/adminRoute.js";
 dotenv.config();
 
 
@@ -148,7 +149,7 @@ app.use("/tutorial", tutorialRoute)
 
 app.use("/store", storeRoute)
 
-
+app.use("/admin", adminrouter)
 
  // Start server
  app.listen(PORT, () => {

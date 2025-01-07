@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 
 import './App.css'
 import Dashboard from './pages/schools/Dashboard'
@@ -56,6 +56,31 @@ import Scholarship from './pages/Scholarship'
 import BookHomePage from './pages/BookHompeage/BookHomePage'
 import BookDetails from './pages/BookHompeage/BookDetails'
 import CategoryDisplay from './component/landingPage/CategoryDisplay'
+import AdminLogin from './pages/Admin/AdminLogin'
+import AdminRegister from './pages/Admin/AdminSignup'
+import AdminDashboard from './pages/Admin/AdminDashboard'
+import AllBooks from './pages/Admin/AllBooks'
+import AllSchools from './pages/Admin/AllSchools'
+import AllTeacher from './pages/Admin/AllTeacher'
+import AllTutorial from './pages/Admin/AllTutorial'
+import AllTraining from './pages/Admin/AllTraining'
+import AllExam from './pages/Admin/AllExam'
+
+const AppLayout = ({ children }) => {
+  const location = useLocation();
+
+  // Define the paths where the footer should not be shown
+  const noFooterRoutes = ["/admin", "/admin/books", "/admin/teachers", "/admin/tutorial", "/admin/training", "/admin/exam", "/adminlogin", "/adminregister", "/admin/schools"  ];
+
+  const showFooter = !noFooterRoutes.includes(location.pathname);
+
+  return (
+    <div className="app-container">
+      <div className="content">{children}</div>
+      {showFooter && <Footer />}
+    </div>
+  );
+};
 function App() {
 
 
@@ -63,7 +88,8 @@ function App() {
     <>
     <Router>
     <Navbar />
-      <Routes>
+    <AppLayout>
+    <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/schoolsdashboard" element={<Dashboard />} />
       <Route path="/schoolsregister" element={<Register />} />
@@ -142,8 +168,22 @@ function App() {
 
 
         <Route path="/scholarship" element={<Scholarship />} />
+
+        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/adminregister" element={<AdminRegister />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+
+        <Route path="/admin/books" element={<AllBooks />} />
+        <Route path="/admin/schools" element={<AllSchools />} />
+        <Route path="/admin/teachers" element={<AllTeacher />} />
+        <Route path="/admin/tutorial" element={<AllTutorial />} />
+        <Route path="/admin/training" element={<AllTraining />} />
+        <Route path="/admin/exam" element={<AllExam />} />
       </Routes>
-      <Footer />
+
+    </AppLayout>
+      
+  
     
  
     </Router>
