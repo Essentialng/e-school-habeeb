@@ -12,6 +12,7 @@ import Training from "../models/training.js"
 import Tutorial from "../models/tutorial.js"
 import Admin from "../models/admin.js"
 
+
 const adminrouter = express.Router()
 
 adminrouter.get("/schools", async(req, res) => {

@@ -573,6 +573,12 @@ const Dashboard = () => {
                   key !== "schoolPicture" &&
                   key !== "coverPicture" 
                 )}
+                <button
+        onClick={() => setShowPopup(false)}
+        className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition"
+      >
+        ✕
+      </button>
       
                 {/* New input fields */}
                 <div className="flex flex-col">

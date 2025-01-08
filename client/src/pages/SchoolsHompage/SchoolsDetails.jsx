@@ -223,7 +223,7 @@ const SchoolsDetails = () => {
               {school.vcspeech}
             </p>
             <img
-              src={school.picture3 || "https://via.placeholder.com/600x200"}
+              src={school.vcpicture || school.picture3|| "https://via.placeholder.com/600x200"}
               alt={school.schoolName}
               className="w-full h-64 rounded-md object-cover shadow-lg"
             />
